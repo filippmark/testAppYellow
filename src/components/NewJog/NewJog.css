@@ -1,0 +1,51 @@
+.form {
+  width: 503px;
+  height: 379px;
+  border-radius: 44px;
+  background-color: #7ed321;
+}
+
+.form__group {
+  display: flex;
+  align-items: center;
+  height: 33px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.form__group:last-child {
+  margin-bottom: 46px;
+}
+
+.form__label {
+  width: 73.8px;
+  height: 19px;
+  margin-right: 16.2px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.form__input {
+  width: 236px;
+  height: 31px;
+  border-radius: 7px;
+  border: solid 1px #979797;
+  background-color: #ffffff;
+}
+
+.form__save-btn {
+  width: 320px;
+  height: 42px;
+  border-radius: 25.2px;
+  border: solid 2px #ffffff;
+  color: white;
+  margin: 0 auto;
+  margin-bottom: 47px;
+}
+
+.form__cancel-img {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+  background-color: #ffffff;
+}

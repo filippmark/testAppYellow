@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../../logo.svg";
-import filter from "../../filter.svg";
-import filterActve from "../../filter-active.svg";
+import logo from "../../images/logo.svg";
+import filter from "../../images/filter.svg";
+import filterActive from "../../images/filter-active.svg";
 import "./Navbar.css";
 
 function Navbar() {
@@ -16,7 +16,7 @@ function Navbar() {
         <li className="nav__item"> INFO </li>
         <li className="nav__item nav__item_contactus"> CONTACT US </li>
         <li className="nav__item">
-          <img src={filter} alt="logobear" className="nav__filter"></img>
+          <img src={filterActive} alt="logobear" className="nav__filter"></img>
         </li>
       </ul>
     </nav>

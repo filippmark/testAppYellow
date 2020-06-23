@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   color: white;
-  font-family: SFUIText;
   font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
@@ -33,7 +32,7 @@
 }
 
 .nav__item_contactus {
-  margin-right: 56px;
+  margin-right: 49px;
 }
 
 .nav__filter {
