@@ -1,0 +1,43 @@
+.nav {
+  height: 116px;
+  background-color: #7ed321;
+}
+
+.nav__logo {
+  margin: 30px 0px 30px 37px;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: SFUIText;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.nav__item {
+  margin-right: 16px;
+}
+
+.nav__item_spacer {
+  flex: 1;
+}
+
+.nav__item_contactus {
+  margin-right: 56px;
+}
+
+.nav__filter {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
