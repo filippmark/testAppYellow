@@ -1,10 +1,39 @@
-export interface SetToken {
-  type: "SET_TOKEN";
+import { ApplicationState } from "../reducers";
+import axios from "axios";
+import { Dispatch } from "redux";
+
+export interface RequestToken {
+  type: "REQUEST_TOKEN";
+}
+
+export interface ReceiveToken {
+  type: "RECEIVE_TOKEN";
   token: string;
 }
 
-export type knownAction = SetToken;
+export type knownAction = RequestToken | ReceiveToken;
 
 export const actionCreators = {
-  setToken: (token: string) => ({ type: "SET_TOKEN", token }),
+  getToken: (): any => {
+    return async (
+      dispatch: Dispatch<knownAction>,
+      getState: () => ApplicationState
+    ) => {
+      dispatch({ type: "REQUEST_TOKEN" });
+
+      try {
+        let formData = new FormData();
+        formData.append("uuid", "hello");
+
+        const response = await axios.post(
+          "https://jogtracker.herokuapp.com/api/v1/auth/uuidLogin",
+          formData
+        );
+
+        dispatch({ type: "RECEIVE_TOKEN", token: response.data.access_token });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  },
 };

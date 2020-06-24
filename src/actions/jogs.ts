@@ -31,7 +31,7 @@ export const actionCreators = {
       dispatch({ type: "REQUEST_JOGS" });
 
       try {
-        const token = "";
+        const token = getState().auth.token;
 
         let formData = new FormData();
         formData.append("date", jog.date);
@@ -61,7 +61,7 @@ export const actionCreators = {
       dispatch({ type: "REQUEST_JOGS" });
 
       try {
-        const token = "";
+        const token = getState().auth.token;
 
         const response = await axios.get(
           "https://jogtracker.herokuapp.com/api/v1/data/sync",
