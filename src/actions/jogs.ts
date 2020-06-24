@@ -47,6 +47,8 @@ export const actionCreators = {
           }
         );
 
+        console.log(response);
+
         dispatch({ type: "RECEIVE_JOGS", jogs: response.data });
       } catch (error) {
         console.log(error);
@@ -73,6 +75,8 @@ export const actionCreators = {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
+
+        console.log(response);
 
         dispatch({ type: "RECEIVE_JOGS", jogs: response.data });
       } catch (error) {

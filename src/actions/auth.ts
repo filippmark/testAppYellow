@@ -42,6 +42,8 @@ export const actionCreators = {
           formData
         );
 
+        console.log(response);
+
         dispatch({ type: "RECEIVE_TOKEN", token: response.data.access_token });
       } catch (error) {
         console.log(error);
