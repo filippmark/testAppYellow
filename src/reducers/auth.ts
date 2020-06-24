@@ -23,10 +23,14 @@ export const reducer: Reducer<AuthState> = (
 
   const action = incomingAction as knownAction;
   switch (action.type) {
+    case "SET_ANAUTH":
+      return { ...state, token: action.token, isAuth: false };
+    case "SET_TOKEN":
+      return { ...state, token: action.token };
     case "REQUEST_TOKEN":
       return { ...state, isLoading: true };
     case "RECEIVE_TOKEN":
-      return { ...state, token: action.token, isLoading: false };
+      return { ...state, token: action.token, isLoading: false, isAuth: true };
     default:
       return state;
   }

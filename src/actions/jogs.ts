@@ -2,6 +2,7 @@ import { Jog } from "../types/jogs";
 import { Dispatch } from "redux";
 import { ApplicationState } from "../reducers";
 import axios from "axios";
+import { knownAction as authActions } from "./auth";
 
 export interface RequestJogsAction {
   type: "REQUEST_JOGS";
@@ -25,7 +26,7 @@ export type knownAction =
 export const actionCreators = {
   addJog: (jog: { date: string; time: number; distance: number }): any => {
     return async (
-      dispatch: Dispatch<knownAction>,
+      dispatch: Dispatch<knownAction | authActions>,
       getState: () => ApplicationState
     ) => {
       dispatch({ type: "REQUEST_JOGS" });
@@ -50,12 +51,15 @@ export const actionCreators = {
       } catch (error) {
         console.log(error);
         dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response.status });
+        if (error.response.status === 401) {
+          dispatch({ type: "SET_ANAUTH", token: "" });
+        }
       }
     };
   },
   receiveJogs: (): any => {
     return async (
-      dispatch: Dispatch<knownAction>,
+      dispatch: Dispatch<knownAction | authActions>,
       getState: () => ApplicationState
     ) => {
       dispatch({ type: "REQUEST_JOGS" });
@@ -73,7 +77,10 @@ export const actionCreators = {
         dispatch({ type: "RECEIVE_JOGS", jogs: response.data });
       } catch (error) {
         console.log(error);
-        dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response });
+        dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response.status });
+        if (error.response.status === 401) {
+          dispatch({ type: "SET_ANAUTH", token: "" });
+        }
       }
     };
   },

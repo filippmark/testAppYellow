@@ -11,9 +11,21 @@ export interface ReceiveToken {
   token: string;
 }
 
-export type knownAction = RequestToken | ReceiveToken;
+export interface SetToken {
+  type: "SET_TOKEN";
+  token: string;
+}
+
+export interface SetAnauth {
+  type: "SET_ANAUTH";
+  token: string;
+}
+
+export type knownAction = RequestToken | ReceiveToken | SetToken | SetAnauth;
 
 export const actionCreators = {
+  setAnAuth: (token: string = "") => ({ type: "SET_ANAUTH", token: token }),
+  setToken: (token: string) => ({ type: "SET_TOKEN", token }),
   getToken: (): any => {
     return async (
       dispatch: Dispatch<knownAction>,
