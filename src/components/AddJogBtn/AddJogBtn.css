@@ -1,6 +1,6 @@
 .add-jog {
-  position: absolute;
-  bottom: 17px;
+  position: fixed;
+  bottom: 40px;
   right: 40px;
   cursor: pointer;
   width: 60px;

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
 import cancel from "../../images/cancel.svg";
 import { form } from "../../types/jogForm";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import "./NewJog.css";
 
-function NewJog() {
+function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
   const [formData, setForm] = useState<form>({
     distance: "",
     time: "",
@@ -30,8 +28,21 @@ function NewJog() {
     });
   }
 
+  function showModal(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    props.updateModal(false);
+  }
+
+  function saveJog(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault();
+    setForm({
+      distance: "",
+      time: "",
+      date: null,
+    });
+  }
+
   return (
-    <React.Fragment>
+    <div className="form-wrapper">
       <form className="form">
         <div className="form__group">
           <label className="form__label" htmlFor="distance">
@@ -62,15 +73,18 @@ function NewJog() {
             Date
           </label>
           <DatePicker
-            className="form__input"
+            className="form__input form__input_date"
             id="date"
             name="date"
             onChange={dateChangeHandler}
             value={!!formData.date ? formData.date.toLocaleDateString() : ""}
           ></DatePicker>
         </div>
-        <button className="form__save-btn"> Save </button>
-        <div className="form__cancel">
+        <button className="form__save-btn" onClick={saveJog}>
+          {" "}
+          Save{" "}
+        </button>
+        <div className="form__cancel" onClick={showModal}>
           <img
             src={cancel}
             alt="close modal window"
@@ -78,7 +92,7 @@ function NewJog() {
           />
         </div>
       </form>
-    </React.Fragment>
+    </div>
   );
 }
 
