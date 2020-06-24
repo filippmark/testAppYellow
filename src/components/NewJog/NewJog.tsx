@@ -1,5 +1,7 @@
 import React from "react";
+import Modal from "react-modal";
 import cancel from "../../images/cancel.svg";
+import './NewJog.css';
 
 function NewJog() {
   return (

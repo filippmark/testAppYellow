@@ -1,0 +1,26 @@
+.filter {
+  height: 60px;
+  background-color: #eaeaea;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter__rowgroup {
+  display: flex;
+  align-items: center;
+  margin-right: 45px;
+}
+
+.filter__label {
+  margin-right: 15px;
+}
+
+.filter__date {
+  width: 100px;
+  height: 31px;
+  border-radius: 11px;
+  border: solid 1px #979797;
+  background-color: #ffffff;
+}

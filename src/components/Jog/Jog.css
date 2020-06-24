@@ -1,0 +1,43 @@
+.jog {
+  margin-bottom: 81.3px;
+  display: flex;
+}
+
+.jog:first-child {
+  margin-top: 53px;
+}
+
+.jog__logo {
+  margin-right: 46px;
+}
+
+.jog__logo-img {
+  width: 87px;
+  height: 87px;
+  object-fit: contain;
+}
+
+.jog__list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.jog__date {
+  width: 73px;
+  height: 16px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.jog__label {
+  height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.jog__data {
+  height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
