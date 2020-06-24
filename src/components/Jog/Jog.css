@@ -27,7 +27,8 @@
   width: 73px;
   height: 16px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 500;
+  color: #9F9696;
 }
 
 .jog__label {
@@ -40,4 +41,5 @@
   height: 16px;
   font-size: 14px;
   font-weight: 500;
+  color: #8F8F8F;
 }

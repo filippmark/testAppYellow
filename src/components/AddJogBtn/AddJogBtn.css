@@ -1,0 +1,14 @@
+.add-jog {
+  position: absolute;
+  bottom: 17px;
+  right: 40px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+}
+
+.add-jog__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

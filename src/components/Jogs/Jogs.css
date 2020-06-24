@@ -1,5 +1,10 @@
-.jogs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.jogs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jogs-wrapper {
+  width: 100%;
+  height: 100%;
 }
