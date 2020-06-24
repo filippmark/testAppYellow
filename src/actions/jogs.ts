@@ -18,10 +18,27 @@ export interface ReceiveJogsFailedAction {
   error: number;
 }
 
+export interface RequestAddJogAction {
+  type: "REQUEST_ADD_JOG";
+}
+
+export interface ReceiveJogAddAction {
+  type: "RECEIVE_ADD_JOG";
+  jog: Jog;
+}
+
+export interface ReceiveJogsAddFailedAction {
+  type: "RECEIVE_JOGS_ADD_FAILED";
+  error: number;
+}
+
 export type knownAction =
   | RequestJogsAction
   | ReceiveJogsAction
-  | ReceiveJogsFailedAction;
+  | ReceiveJogsFailedAction
+  | RequestAddJogAction
+  | ReceiveJogAddAction
+  | ReceiveJogsAddFailedAction;
 
 export const actionCreators = {
   addJog: (jog: { date: string; time: number; distance: number }): any => {
@@ -29,7 +46,7 @@ export const actionCreators = {
       dispatch: Dispatch<knownAction | authActions>,
       getState: () => ApplicationState
     ) => {
-      dispatch({ type: "REQUEST_JOGS" });
+      dispatch({ type: "REQUEST_ADD_JOG" });
 
       try {
         const token = getState().auth.token;
@@ -40,7 +57,7 @@ export const actionCreators = {
         formData.append("date", jog.distance.toString());
 
         const response = await axios.post(
-          "https://jogtracker.herokuapp.com/api/v1/data/sync",
+          "https://jogtracker.herokuapp.com/api/v1/data/jog",
           formData,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -49,10 +66,13 @@ export const actionCreators = {
 
         console.log(response);
 
-        dispatch({ type: "RECEIVE_JOGS", jogs: response.data });
+        dispatch({ type: "RECEIVE_ADD_JOG", jog: response.data });
       } catch (error) {
         console.log(error);
-        dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response.status });
+        dispatch({
+          type: "RECEIVE_JOGS_ADD_FAILED",
+          error: error.response.status,
+        });
         if (error.response.status === 401) {
           dispatch({ type: "SET_ANAUTH", token: "" });
         }
@@ -78,7 +98,7 @@ export const actionCreators = {
 
         console.log(response);
 
-        dispatch({ type: "RECEIVE_JOGS", jogs: response.data });
+        dispatch({ type: "RECEIVE_JOGS", jogs: response.data.response.jogs });
       } catch (error) {
         console.log(error);
         dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response.status });

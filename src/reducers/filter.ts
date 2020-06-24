@@ -1,7 +1,7 @@
 import { Reducer, Action } from "redux";
 import { knownAction } from "../actions/filter";
 
-const initialState = {
+export const initialState = {
   isFilterEnabled: false,
 };
 

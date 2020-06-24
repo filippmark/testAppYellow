@@ -44,7 +44,13 @@ export const actionCreators = {
 
         console.log(response);
 
-        dispatch({ type: "RECEIVE_TOKEN", token: response.data.access_token });
+        const token = response.data.response.access_token;
+        dispatch({
+          type: "RECEIVE_TOKEN",
+          token,
+        });
+
+        localStorage.setItem("token", token);
       } catch (error) {
         console.log(error);
       }

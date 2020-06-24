@@ -1,10 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import bearFace from "../../images/bear-face.svg";
+import { actionCreators } from "../../actions/auth";
 import "./LetIn.css";
 
 function LetIn() {
+  const dispatch = useDispatch();
+
   function handleLetIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
+    dispatch(actionCreators.getToken());
   }
 
   return (

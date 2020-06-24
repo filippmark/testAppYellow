@@ -1,7 +1,7 @@
 import { Reducer, Action } from "redux";
 import { knownAction } from "../actions/auth";
 
-const initialState = {
+export const initialState = {
   token: "",
   isAuth: false,
   isLoading: false,

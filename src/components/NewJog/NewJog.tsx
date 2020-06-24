@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import cancel from "../../images/cancel.svg";
 import { form } from "../../types/jogForm";
 import DatePicker from "react-datepicker";
+import { actionCreators } from "../../actions/jogs";
+import { useDispatch } from "react-redux";
 import "./NewJog.css";
 
 function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
@@ -10,6 +12,7 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
     time: "",
     date: null,
   });
+  const dispatch = useDispatch();
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     setForm({
@@ -34,6 +37,15 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
 
   function saveJog(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
+
+    dispatch(
+      actionCreators.addJog({
+        date: !!formData.date ? formData.date.toLocaleDateString() : "",
+        distance: parseFloat(formData.distance),
+        time: parseInt(formData.distance),
+      })
+    );
+
     setForm({
       distance: "",
       time: "",
