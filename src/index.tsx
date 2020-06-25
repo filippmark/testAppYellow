@@ -19,6 +19,7 @@ if (token) {
   auth = {
     ...auth,
     token,
+    isAuth: true
   };
 }
 

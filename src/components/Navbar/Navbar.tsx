@@ -9,8 +9,10 @@ import { actionCreators } from "../../actions/filter";
 
 function Navbar() {
   const isFilterEnabled: boolean = useSelector(
-    (state: ApplicationState) => state.filter.isFilterEnabled,
-    shallowEqual
+    (state: ApplicationState) => state.filter.isFilterEnabled
+  );
+  const isAuth: boolean = useSelector(
+    (state: ApplicationState) => state.auth.isAuth
   );
   const dispatch = useDispatch();
 
@@ -29,19 +31,23 @@ function Navbar() {
           <img src={logo} alt="logobear" className="nav__logo"></img>
         </li>
         <li className="nav__item nav__item_spacer"></li>
-        <li className="nav__item"> JOGS </li>
-        <li className="nav__item"> INFO </li>
-        <li className="nav__item nav__item_contactus"> CONTACT US </li>
-        <li
-          className="nav__item nav__item_filter"
-          onClick={handleActivateFilter}
-        >
-          <img
-            src={isFilterEnabled ? filterActive : filter}
-            alt="logobear"
-            className="nav__filter"
-          ></img>
-        </li>
+        {isAuth && (
+          <React.Fragment>
+            <li className="nav__item"> JOGS </li>
+            <li className="nav__item"> INFO </li>
+            <li className="nav__item nav__item_contactus"> CONTACT US </li>
+            <li
+              className="nav__item nav__item_filter"
+              onClick={handleActivateFilter}
+            >
+              <img
+                src={isFilterEnabled ? filterActive : filter}
+                alt="logobear"
+                className="nav__filter"
+              ></img>
+            </li>
+          </React.Fragment>
+        )}
       </ul>
     </nav>
   );

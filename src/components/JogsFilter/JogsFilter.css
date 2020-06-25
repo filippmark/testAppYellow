@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: filterAppereance 500ms;
 }
 
 .filter__rowgroup {
@@ -23,4 +24,15 @@
   border-radius: 11px;
   border: solid 1px #979797;
   background-color: #ffffff;
+}
+
+@keyframes filterAppereance{
+
+  from{
+      opacity: 0;
+  }
+
+  to{
+      opacity: 1;
+  }
 }

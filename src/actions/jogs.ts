@@ -68,16 +68,14 @@ export const actionCreators = {
 
         let jogData = response.data.response;
         const jogReceived: Jog = {
-          distance: jogData.distance, 
+          distance: jogData.distance,
           date: Date.parse(jogData.date),
           time: jogData.time,
           id: jogData.id,
-          user_id: jogData.user_id
-        }
+          user_id: jogData.user_id,
+        };
 
-        debugger;
-
-        dispatch({ type: "RECEIVE_ADD_JOG", jog: jogReceived  });
+        dispatch({ type: "RECEIVE_ADD_JOG", jog: jogReceived });
       } catch (error) {
         console.log(error);
         dispatch({
@@ -109,7 +107,12 @@ export const actionCreators = {
 
         console.log(response);
 
-        dispatch({ type: "RECEIVE_JOGS", jogs: response.data.response.jogs });
+        const jogs: Jog[] = response.data.response.jogs.map((jog: Jog): Jog => ({
+          ...jog,
+          date: jog.date * 1000
+        })).reverse();
+
+        dispatch({ type: "RECEIVE_JOGS", jogs });
       } catch (error) {
         console.log(error);
         dispatch({ type: "RECEIVE_JOGS_FAILED", error: error.response.status });

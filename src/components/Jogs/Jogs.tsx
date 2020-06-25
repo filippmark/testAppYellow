@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router";
 import JogsFilter from "../JogsFilter/JogsFilter";
 import AddJogBtn from "../AddJogBtn/AddJogBtn";
 import "./Jogs.css";
@@ -41,6 +42,12 @@ export default function Jogs() {
       return state.jogs.jogs;
     }
   }, shallowEqual);
+  const isFilterEnabled: boolean = useSelector(
+    (state: ApplicationState) => state.filter.isFilterEnabled
+  );
+  const isAuth: boolean = useSelector(
+    (state: ApplicationState) => state.auth.isAuth
+  );
 
   const dispatch = useDispatch();
 
@@ -52,18 +59,22 @@ export default function Jogs() {
     dispatch(actionCreators.receiveJogs());
   }, [dispatch]);
 
-  return (
-    <div className="jogs-wrapper">
-      <JogsFilter></JogsFilter>
-      <div className="jogs">
-        {jogs.map((jog: JogType) => (
-          <Jog key={jog.id} {...jog}></Jog>
-        ))}
+  if (isAuth) {
+    return (
+      <div className="jogs-wrapper">
+        {isFilterEnabled && <JogsFilter></JogsFilter>}
+        <div className="jogs">
+          {jogs.map((jog: JogType) => (
+            <Jog key={jog.id} {...jog}></Jog>
+          ))}
+        </div>
+        <AddJogBtn updateModal={updateModalWindowState}></AddJogBtn>
+        <Modal isOpen={isModalOpen} style={customStyles}>
+          <NewJog updateModal={updateModalWindowState}></NewJog>
+        </Modal>
       </div>
-      <AddJogBtn updateModal={updateModalWindowState}></AddJogBtn>
-      <Modal isOpen={isModalOpen} style={customStyles}>
-        <NewJog updateModal={updateModalWindowState}></NewJog>
-      </Modal>
-    </div>
-  );
+    );
+  } else {
+    return <Redirect to="/let-in"></Redirect>;
+  }
 }
