@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import "./JogsFilter.css";
 import DatePicker from "react-datepicker";
+import { ApplicationState } from "../../reducers/";
+import { actionCreators } from "../../actions/filter";
 
 function Jogs() {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const { startDate, endDate } = useSelector(
+    (state: ApplicationState) => ({
+      startDate: state.filter.startDate,
+      endDate: state.filter.endDate,
+    }),
+    shallowEqual
+  );
+  const dispatch = useDispatch();
 
   function startDateChangeHandler(
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined
   ) {
-    setStartDate(date);
+     dispatch(actionCreators.setStartDate(date));
   }
 
   function endDateChangeHandler(
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined
   ) {
-    setEndDate(date);
+    dispatch(actionCreators.setEndDate(date));
   }
 
   return (

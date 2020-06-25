@@ -35,6 +35,10 @@
   margin-right: 49px;
 }
 
+.nav__item_filter{
+  cursor: pointer;
+}
+
 .nav__filter {
   width: 26px;
   height: 26px;

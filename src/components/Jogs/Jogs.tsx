@@ -27,10 +27,21 @@ const customStyles = {
 
 export default function Jogs() {
   const [isModalOpen, setIsOpen] = useState(false);
-  const jogs: JogType[] = useSelector(
-    (state: ApplicationState) => state.jogs.jogs,
-    shallowEqual
-  );
+  const jogs: JogType[] = useSelector((state: ApplicationState) => {
+    const endDate: Date | null = state.filter.endDate;
+    const startDate: Date | null = state.filter.startDate;
+    if (state.filter.isFilterEnabled && (!!endDate || !!startDate)) {
+      return state.jogs.jogs.filter((jog: JogType) => {
+        const result =
+          (!!!startDate || jog.date - startDate.getTime() >= 0) &&
+          (!!!endDate || endDate.getTime() - jog.date >= 0);
+        return result;
+      });
+    } else {
+      return state.jogs.jogs;
+    }
+  }, shallowEqual);
+
   const dispatch = useDispatch();
 
   function updateModalWindowState(isOpen: boolean) {

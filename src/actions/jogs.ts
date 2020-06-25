@@ -54,7 +54,7 @@ export const actionCreators = {
         let formData = new FormData();
         formData.append("date", jog.date);
         formData.append("time", jog.time.toString());
-        formData.append("date", jog.distance.toString());
+        formData.append("distance", jog.distance.toString());
 
         const response = await axios.post(
           "https://jogtracker.herokuapp.com/api/v1/data/jog",
@@ -66,7 +66,18 @@ export const actionCreators = {
 
         console.log(response);
 
-        dispatch({ type: "RECEIVE_ADD_JOG", jog: response.data });
+        let jogData = response.data.response;
+        const jogReceived: Jog = {
+          distance: jogData.distance, 
+          date: Date.parse(jogData.date),
+          time: jogData.time,
+          id: jogData.id,
+          user_id: jogData.user_id
+        }
+
+        debugger;
+
+        dispatch({ type: "RECEIVE_ADD_JOG", jog: jogReceived  });
       } catch (error) {
         console.log(error);
         dispatch({

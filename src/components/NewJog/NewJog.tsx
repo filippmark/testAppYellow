@@ -37,7 +37,7 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
 
   function saveJog(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-
+    console.log(formData);
     dispatch(
       actionCreators.addJog({
         date: !!formData.date ? formData.date.toLocaleDateString() : "",
