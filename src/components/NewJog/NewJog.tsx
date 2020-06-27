@@ -92,7 +92,15 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
             value={!!formData.date ? formData.date.toLocaleDateString() : ""}
           ></DatePicker>
         </div>
-        <button className="form__save-btn form__save-btn-mobile" onClick={saveJog}>
+        <button
+          className="form__save-btn form__save-btn-mobile"
+          onClick={saveJog}
+          disabled={
+            !!!parseFloat(formData.distance) ||
+            !!!parseFloat(formData.time) ||
+            !!!formData.date
+          }
+        >
           {" "}
           Save{" "}
         </button>

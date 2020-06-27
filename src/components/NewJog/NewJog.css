@@ -71,6 +71,10 @@
   top: 27px;
 }
 
+.form__save-btn:disabled{
+  background-color: #add384;
+}
+
 @media (max-width: 544px) {
   .form__group-mobile:first-child {
     margin-top: 0px;
