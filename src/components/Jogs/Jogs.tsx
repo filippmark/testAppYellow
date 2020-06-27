@@ -88,7 +88,7 @@ export default function Jogs() {
   );
 
   if (isAuth) {
-    if (!!jogs.length || (!!!jogs.length && isLoading)) {
+    if (!!jogs.length || (!!!jogs.length && isLoading) || (!!!jogs.length && isFilterEnabled)) {
       return (
         <div className="jogs-wrapper">
           {isFilterEnabled && <JogsFilter></JogsFilter>}
