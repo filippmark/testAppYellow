@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import filter from "../../images/filter.svg";
 import filterActive from "../../images/filter-active.svg";
@@ -28,14 +29,41 @@ function Navbar() {
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <img src={logo} alt="logobear" className="nav__logo"></img>
+          <NavLink exact to="/" className="nav__link">
+            <img src={logo} alt="logobear" className="nav__logo"></img>
+          </NavLink>
         </li>
         <li className="nav__item nav__item_spacer"></li>
         {isAuth && (
           <React.Fragment>
-            <li className="nav__item"> JOGS </li>
-            <li className="nav__item"> INFO </li>
-            <li className="nav__item nav__item_contactus"> CONTACT US </li>
+            <li className="nav__item">
+              <NavLink
+                exact
+                to="/"
+                className="nav__link"
+                activeClassName="nav__link-active"
+              >
+                JOGS
+              </NavLink>
+            </li>
+            <li className="nav__item">
+              <NavLink
+                to="/info"
+                className="nav__link"
+                activeClassName="nav__link-active"
+              >
+                INFO
+              </NavLink>
+            </li>
+            <li className="nav__item nav__item_contactus">
+              <NavLink
+                to="/contact-us"
+                className="nav__link"
+                activeClassName="nav__link-active"
+              >
+                CONTACT US
+              </NavLink>
+            </li>
             <li
               className="nav__item nav__item_filter"
               onClick={handleActivateFilter}

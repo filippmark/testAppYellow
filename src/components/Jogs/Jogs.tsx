@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import { Jog as JogType } from "../../types/jogs";
 import { ApplicationState } from "../../reducers/";
 import Jog from "../Jog/Jog";
+import { createSelector } from "reselect";
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -26,22 +27,33 @@ const customStyles = {
   },
 };
 
-export default function Jogs() {
-  const [isModalOpen, setIsOpen] = useState(false);
-  const jogs: JogType[] = useSelector((state: ApplicationState) => {
-    const endDate: Date | null = state.filter.endDate;
-    const startDate: Date | null = state.filter.startDate;
-    if (state.filter.isFilterEnabled && (!!endDate || !!startDate)) {
-      return state.jogs.jogs.filter((jog: JogType) => {
-        const result =
+const selectJogs = createSelector(
+  (state: ApplicationState) => state.filter.isFilterEnabled,
+  (state: ApplicationState) => state.filter.startDate,
+  (state: ApplicationState) => state.filter.endDate,
+  (state: ApplicationState) => state.jogs.jogs,
+  (
+    isFilterEnabled: boolean,
+    startDate: Date | null,
+    endDate: Date | null,
+    jogs: JogType[]
+  ) => {
+    if (isFilterEnabled && (!!endDate || !!startDate)) {
+      return jogs.filter((jog: JogType) => {
+        return (
           (!!!startDate || jog.date - startDate.getTime() >= 0) &&
-          (!!!endDate || endDate.getTime() - jog.date >= 0);
-        return result;
+          (!!!endDate || endDate.getTime() - jog.date >= 0)
+        );
       });
     } else {
-      return state.jogs.jogs;
+      return jogs;
     }
-  }, shallowEqual);
+  }
+);
+
+export default function Jogs() {
+  const [isModalOpen, setIsOpen] = useState(false);
+  const jogs: JogType[] = useSelector(selectJogs, shallowEqual);
   const isFilterEnabled: boolean = useSelector(
     (state: ApplicationState) => state.filter.isFilterEnabled
   );
@@ -56,6 +68,7 @@ export default function Jogs() {
   }
 
   useEffect(() => {
+    console.log("----");
     dispatch(actionCreators.receiveJogs());
   }, [dispatch]);
 

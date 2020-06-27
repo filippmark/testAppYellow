@@ -3,7 +3,8 @@ import icon from "../../images/icon.svg";
 import "./Jog.css";
 import { Jog as JogType } from "../../types/jogs";
 
-export default function Jog(props: JogType) {
+function Jog(props: JogType) {
+
   return (
     <div className="jog">
       <div className="jog__logo">
@@ -12,7 +13,10 @@ export default function Jog(props: JogType) {
       <div className="jog__details">
         <ul className="jog__list">
           <li className="jog__item">
-            <span className="jog__date"> {new Date(props.date).toLocaleDateString()} </span>
+            <span className="jog__date">
+              {" "}
+              {new Date(props.date).toLocaleDateString()}{" "}
+            </span>
           </li>
           <li className="jog__item">
             <span className="jog__label"> Speed: </span>
@@ -31,3 +35,5 @@ export default function Jog(props: JogType) {
     </div>
   );
 }
+
+export default React.memo(Jog);

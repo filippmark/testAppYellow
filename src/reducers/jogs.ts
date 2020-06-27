@@ -41,7 +41,7 @@ export const reducer: Reducer<JogsState> = (
     case "RECEIVE_JOGS":
       return { ...state, isLoading: false, jogs: action.jogs };
     case "REQUEST_JOGS":
-      return { ...state, isLoading: true, jogs: [], errorCode: 0 };
+      return { ...state, isLoading: true, errorCode: 0 };
     case "RECEIVE_JOGS_FAILED":
       return { ...state, isLoading: false, errorCode: action.error };
     default:

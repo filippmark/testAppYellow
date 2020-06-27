@@ -35,7 +35,7 @@
   margin-right: 49px;
 }
 
-.nav__item_filter{
+.nav__item_filter {
   cursor: pointer;
 }
 
@@ -44,4 +44,14 @@
   height: 26px;
   object-fit: contain;
   cursor: pointer;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+  padding-bottom: 4px;
+}
+
+.nav__link-active {
+  border-bottom: 2px solid white;
 }
