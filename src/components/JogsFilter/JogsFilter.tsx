@@ -15,40 +15,44 @@ function Jogs() {
   );
   const dispatch = useDispatch();
 
-  function startDateChangeHandler(
-    date: Date | null,
-    event: React.SyntheticEvent<any, Event> | undefined
-  ) {
-    date?.setHours(0);
-    dispatch(actionCreators.setStartDate(date));
+  function startDateChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    if (!!event.target.value) {
+      const date = new Date(event.target.value);
+      date.setHours(0);
+      dispatch(actionCreators.setStartDate(date));
+    }
   }
 
-  function endDateChangeHandler(
-    date: Date | null,
-    event: React.SyntheticEvent<any, Event> | undefined
-  ) {
-    date?.setHours(0);
-    dispatch(actionCreators.setEndDate(date));
+  function endDateChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    if (!!event.target.value) {
+      const date = new Date(event.target.value);
+      date.setHours(0);
+      dispatch(actionCreators.setEndDate(date));
+    }
   }
 
   return (
     <React.Fragment>
       <div className="filter">
         <div className="filter__rowgroup filter__rowgroup-mobile">
-          <label className="filter__label filter__label-mobile">Date from</label>
-          <DatePicker
+          <label className="filter__label filter__label-mobile">
+            Date from
+          </label>
+          <input
+            type="date"
             value={!!startDate ? startDate.toLocaleDateString() : ""}
             onChange={startDateChangeHandler}
             className="filter__date filter__date-mobile"
-          ></DatePicker>
+          ></input>
         </div>
         <div className="filter__rowgroup filter__rowgroup-mobile">
           <label className="filter__label filter__label-mobile">Date to</label>
-          <DatePicker
+          <input
+            type="date"
             value={!!endDate ? endDate.toLocaleDateString() : ""}
             onChange={endDateChangeHandler}
             className="filter__date filter__date-mobile"
-          ></DatePicker>
+          ></input>
         </div>
       </div>
     </React.Fragment>
