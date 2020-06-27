@@ -54,10 +54,10 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
   }
 
   return (
-    <div className="form-wrapper">
-      <form className="form">
-        <div className="form__group">
-          <label className="form__label" htmlFor="distance">
+    <div className="form-wrapper form-wrapper-mobile">
+      <form className="form form-mobile">
+        <div className="form__group form__group-mobile">
+          <label className="form__label form__label-mobile" htmlFor="distance">
             Distance
           </label>
           <input
@@ -68,8 +68,8 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
             onChange={handleInputChange}
           ></input>
         </div>
-        <div className="form__group">
-          <label className="form__label" htmlFor="time">
+        <div className="form__group form__group-mobile">
+          <label className="form__label form__label-mobile" htmlFor="time">
             Time
           </label>
           <input
@@ -80,8 +80,8 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
             onChange={handleInputChange}
           ></input>
         </div>
-        <div className="form__group">
-          <label className="form__label" htmlFor="date">
+        <div className="form__group form__group-mobile">
+          <label className="form__label form__label-mobile" htmlFor="date">
             Date
           </label>
           <DatePicker
@@ -92,7 +92,7 @@ function NewJog(props: { updateModal: (isOpen: boolean) => void }) {
             value={!!formData.date ? formData.date.toLocaleDateString() : ""}
           ></DatePicker>
         </div>
-        <button className="form__save-btn" onClick={saveJog}>
+        <button className="form__save-btn form__save-btn-mobile" onClick={saveJog}>
           {" "}
           Save{" "}
         </button>

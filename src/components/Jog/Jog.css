@@ -1,10 +1,10 @@
 .jog {
-  margin-bottom: 81.3px;
+  padding-bottom: 81.3px;
   display: flex;
 }
 
 .jog:first-child {
-  margin-top: 53px;
+  padding-top: 53px;
 }
 
 .jog__logo {
@@ -42,4 +42,16 @@
   font-size: 14px;
   font-weight: 500;
   color: #8F8F8F;
+}
+
+
+@media (max-width: 544px) {
+  .jog {
+    padding-bottom: 40px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    border-bottom: 1px solid #DCDCDC;
+    padding-top: 40px;
+  }
 }

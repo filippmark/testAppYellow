@@ -1,20 +1,15 @@
 .let-in-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .let-in {
   width: 503px;
   height: 379px;
   border-radius: 44px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -190px 0 0 -250px;
   background-color: #e990f9;
   display: flex;
   flex-direction: column;
@@ -41,4 +36,16 @@
   color: white;
   background: #e990f9;
   cursor: pointer;
+}
+
+@media (max-width: 544px) {
+  .let-in {
+    background-color: white;
+  }
+
+  .let-in__btn {
+    color: #e990f9;
+    background: white;
+    border: solid 3px #e990f9;
+  }
 }

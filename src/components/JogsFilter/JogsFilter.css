@@ -14,6 +14,7 @@
   margin-right: 45px;
 }
 
+
 .filter__label {
   margin-right: 15px;
 }
@@ -34,5 +35,22 @@
 
   to{
       opacity: 1;
+  }
+}
+
+
+@media (max-width: 544px) {
+  .filter__date-mobile{
+    width: 70px;
+  } 
+  .filter__rowgroup-mobile {
+    margin-right: 20px;
+  }
+  .filter__rowgroup-mobile:last-child{
+    margin-right: 0px;
+  }
+
+  .filter__label-mobile {
+    margin-right: 10px;
   }
 }

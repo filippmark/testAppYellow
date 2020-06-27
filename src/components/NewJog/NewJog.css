@@ -1,4 +1,4 @@
-.form-wrapper{
+.form-wrapper {
   width: 503px;
   height: 530px;
 }
@@ -46,7 +46,7 @@
   background-color: #ffffff;
 }
 
-.form__input_date{
+.form__input_date {
   z-index: 100;
 }
 
@@ -69,4 +69,35 @@
   position: absolute;
   right: 27px;
   top: 27px;
+}
+
+@media (max-width: 544px) {
+  .form__group-mobile:first-child {
+    margin-top: 0px;
+  }
+
+  .form-wrapper-mobile {
+    width: 280px;
+  }
+
+  .form-mobile {
+    width: 280px;
+    border-radius: 20px;
+  }
+
+  .form__group-mobile {
+    display: block;
+    width: 242px;
+    height: 40px;
+  }
+
+  .form__label-mobile {
+    height: 20px;
+    padding-bottom: 20px;
+  }
+
+  .form__save-btn-mobile {
+    width: 242px;
+    margin-top: 20px;
+  }
 }

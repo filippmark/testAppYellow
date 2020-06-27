@@ -55,3 +55,77 @@
 .nav__link-active {
   border-bottom: 2px solid white;
 }
+
+.nav_menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav_menu-img {
+  width: 26px;
+  height: 26px;
+}
+
+.nav__modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+}
+
+.modal__list {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -95px 0 0 -85px;
+}
+
+.modal__item {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.modal__link {
+  text-decoration: none;
+  color: #464347;
+}
+
+.modal__link-active {
+  color: #7ed321;
+}
+
+.modal__head {
+  display: flex;
+}
+
+.modal__spacer {
+  flex: 1;
+}
+
+.modal__logo,
+.modal__close {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.modal__close {
+  background: none;
+  border: none;
+}
+
+@media (max-width: 544px) {
+  .nav-mobile {
+    height: 56px;
+  }
+
+  .nav__logo-mobile {
+    margin: 10px 0px 10px 20px;
+    height: 30px;
+  }
+}

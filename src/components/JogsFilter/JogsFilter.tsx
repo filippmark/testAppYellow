@@ -19,33 +19,35 @@ function Jogs() {
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined
   ) {
-     dispatch(actionCreators.setStartDate(date));
+    date?.setHours(0);
+    dispatch(actionCreators.setStartDate(date));
   }
 
   function endDateChangeHandler(
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined
   ) {
+    date?.setHours(0);
     dispatch(actionCreators.setEndDate(date));
   }
 
   return (
     <React.Fragment>
       <div className="filter">
-        <div className="filter__rowgroup">
-          <label className="filter__label">Date from</label>
+        <div className="filter__rowgroup filter__rowgroup-mobile">
+          <label className="filter__label filter__label-mobile">Date from</label>
           <DatePicker
             value={!!startDate ? startDate.toLocaleDateString() : ""}
             onChange={startDateChangeHandler}
-            className="filter__date"
+            className="filter__date filter__date-mobile"
           ></DatePicker>
         </div>
-        <div className="filter__rowgroup">
-          <label className="filter__label">Date to</label>
+        <div className="filter__rowgroup filter__rowgroup-mobile">
+          <label className="filter__label filter__label-mobile">Date to</label>
           <DatePicker
             value={!!endDate ? endDate.toLocaleDateString() : ""}
             onChange={endDateChangeHandler}
-            className="filter__date"
+            className="filter__date filter__date-mobile"
           ></DatePicker>
         </div>
       </div>

@@ -9,7 +9,7 @@ function AddJogBtn(props: { updateModal: (isOpen: boolean) => void }) {
     }
 
   return (
-    <div className="add-jog" onClick={showModal}>
+    <div className="add-jog add-jog_mobile" onClick={showModal}>
       <img className="add-jog__image" src={addNewIcon} alt="add new jog"></img>
     </div>
   );
